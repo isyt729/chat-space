@@ -40,8 +40,9 @@
       %form.new-message
         .input-box
           %input.input-box__text{placeholder:"type a message", type:"text",}
-          %label.input-box__image{for: "upload-icon"}
+          %label.input-box__image{for: "message_image"}
             %i.fa.fa-image
+            %input.input-box__image__file{type:"file",id:"message_image"}
         %input.submit-btn{type:"submit", name:"commit",value:"Send"}
         
     
