@@ -1,4 +1,48 @@
-.chat__left
-  .header__left
-
+.wrapper
+  .left
+    .side-header
+      .side-header-box
+        %p.side-header-box__name
+          name
+        %ul.side-header-box__menu
+          %li.side-header-box__menu__new-group
+            %a{ href: '' }
+              %i.fa.fa-edit
+          %li.side-header-box__menu__edit-user
+            %a{ href: '' }
+              %i.fa.fa-cog
+    .groups
+      .group
+        .group__name
+          groupname
+        .group__latest-message
+          latestmessages
+  .right
+    .main-header
+      .main-header__left-box
+        .main-header__left-box__group-name
+          GroupName
+        .main-header__left-box__member-header
+          MemberName
+      %a.edit{ href: '' }
+        .main-header__edit-btn
+          Edit
+    .messages
+      .message
+        .message__info
+          .message__info__talker
+            talker
+          .message__info__date
+            date
+        %p.message__text
+          text
+    .form
+      %form.new-message
+        .input-box
+          %input.input-box__text{placeholder:"type a message", type:"text",}
+          %label.input-box__image{for: "upload-icon"}
+            %i.fa.fa-image
+        %input.submit-btn{type:"submit", name:"commit",value:"Send"}
+        
+    
 
