@@ -1,8 +1,5 @@
 *{
   box-sizing: border-box;
-}
-
-.wrapper{
   margin: 0;
   padding: 0;
 }
@@ -15,9 +12,9 @@
   -webkit-font-smoothing: antialiased;
 }
 
+
 .left{
-  width: 300px;
-  float: left;
+  @include side(300px);
   color: white;
 
   a{
@@ -25,31 +22,19 @@
   }
 
   .side-header{
-    height: 100px;
-    display: flex;
+    @include items(100px, 0 20px, #253141, true);
     align-items: center;
-    padding: 0 20px;
-    background: #253141;
+    display: flex;
 
     .side-header-box{
-      display: flex;
-      justify-content: space-between;
+      @include flex_box;
       width: 100%;
       font-weight: bold;
-      
-      &__name{
-        margin: 0;
-        padding: 0;
-      }
 
-      &__menu{
+      &_menu{
         display: flex;
-        
-        &__new-group{
-          margin-left: 0.3rem;
-        }
-
-        &__edit-user{
+     
+        &_new-group, &_edit-user{
           margin-left: 0.3rem;
         }
       }  
@@ -57,108 +42,89 @@
   }
     
   .groups{
-    height: calc(100vh - 100px);
-    background-color: #2f3e51;
-    padding: 20px 20px 0;
-    overflow: scroll;
+    @include items(calc(100vh - 100px), 20px 20px 0, #2f3e51, true);
+    overflow: scroll;    
   }
     
   .group{
     margin-bottom: 40px;
     
-    &__name{
-      font-size: 15px;
-      margin-bottom: 5px;
+    &_name{
+      @include text(15px, 5px, $set_mb:true);
     }
 
-    &__latest-message{
+    &_latest-message{
       font-size: 11px;
     } 
   }
 }
 
-
-
 .right{
-  width: calc(100vw - 300px);
-  float: left;
+  @include side(calc(100vw - 300px));
 
   .main-header{
-    height: 100px;
-    padding: 0 40px;
-    display: flex;
-    justify-content: space-between;
+    @include items(100px, 0 40px);
+    @include flex_box;
     border-bottom: solid 1px #eeeeee;
     overflow: scroll;
-
-    a.edit{
-      color: #38aef0;
-    }
   
-    &__left-box{
+    &_left-box{
       margin-top: 35px;
   
-      &__group-name{
-        font-size: 20px;
-        color: #333333;
-        margin-bottom: 15px;
+      &_group-name{
+        @include text(20px, 15px, #333333 , true, true)
       }
   
-      &__member-header{
-        font-size: 12px;
-        color: #999999;
+      &_member-header{
+        @include text(12px, $c:$gray_text, $set_c:true)
       }
     }
   
-    &__edit-btn{
-      height: 40px;
+    &_edit-btn{
+      @include items(40px, 0 20px);
       line-height: 40px;
-      padding: 0 20px;
       margin-top: 30px;
-      border: solid 1px #38aef0;
+      border: solid 1px $btn_color;
       position: absolute;
       right: 40px;
+
+    }
+
+    a.edit{
+      color: $btn_color;
     }
   }
   
   .messages{
-    height: calc(100vh - 190px);
-    padding: 46px 40px;
-    background-color: #fafafa;
+    @include items(calc(100vh - 190px), 46px 40px, #fafafa, true);
     overflow: scroll;
 
     .message{
       padding-bottom: 40px;
     
-      &__info{
+      &_info{
         display: flex;
         margin-bottom: 10px;
     
-        &__talker{
-          color: #434a54;
-          font-size: 16px;
+        &_talker{
+          @include text(16px, $c:$black_text, $set_c:true);
           font-weight: bold;
         }
     
-        &__date{
-          color: #999999;
-          font-size: 12px;
+        &_date{
+          @include text(12px, $c:$gray_text, $set_c:true);
           margin-left: 10px;
         }
       }
     
-      &__text{
-        color: #434a54;
-        font-size: 14px;
-        margin-bottom: 10px;
+      &_text{
+        @include text(14px, 10px, $black_text, true, true)
       }
     }
   }
   
   .form{
-    height: 90px;
-    padding: 20px 40px;
-    background-color: #ddd;
+    @include items(90px, 20px 40px, #dddddd, true);
   }
   
   .new-message{
@@ -169,33 +135,30 @@
     position: relative;
     width: 100%;
   
-    &__text{
-      height: 50px;
+    &_text{
+      @include items(50px, 0 40px 0 10px);
       width: 100%;
-      padding: 0 40px 0 10px;
-      color: #434a54;
+      color: $black_text;
       border-style: none;
     }
   
-    &__image{
+    &_image{
       font-size: 1.3rem;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
 
-      &__file{
+      &_file{
         display: none;
       }
     }
   }
   
   .submit-btn{
+    @include items(50px, 0 30px, $btn_color, true);
     width: 100px;
-    height: 50px;
-    padding: 0 30px;
     margin-left: 15px;
-    background-color: #38aef0;
     color: white;
     cursor: pointer;
   }  
