@@ -1,49 +1,17 @@
 
 .left
   .side-header
-    .side-header-box
-      %p.side-header-box_name
-        name
-      %ul.side-header-box_menu
-        %li.side-header-box_menu_new-group
-          %a{ href: '' }
-            %i.fa.fa-edit
-        %li.side-header-box_menu_edit-user
-          %a{ href: '' }
-            %i.fa.fa-cog
+    = render partial: 'layouts/side-header'
   .groups
-    .group
-      .group_name
-        groupname
-      .group_latest-message
-        latestmessages
+    = render partial: 'layouts/group'
 .right
   .main-header
-    .main-header_left-box
-      .main-header_left-box_group-name
-        GroupName
-      .main-header_left-box_member-header
-        MemberName
-    %a.edit{ href: '' }
-      .main-header_edit-btn
-        Edit
+    = render partial: 'layouts/main-header'
   .messages
-    .message
-      .message_info
-        .message_info_talker
-          talker
-        .message_info_date
-          date
-      %p.message_text
-        text
+    = render partial: 'layouts/message'
   .form
-    %form.new-message
-      .input-box
-        %input.input-box_text{placeholder:"type a message", type:"text",}
-        %label.input-box_image{for: "message_image"}
-          %i.fa.fa-image
-          %input.input-box_image_file{type:"file",id:"message_image"}
-      %input.submit-btn{type:"submit", name:"commit",value:"Send"}
+    = render partial: 'layouts/form'
+
         
     
 

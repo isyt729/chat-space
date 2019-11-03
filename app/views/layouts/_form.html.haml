@@ -1,0 +1,7 @@
+%form.new-message
+  .input-box
+    %input.input-box_text{placeholder:"type a message", type:"text",}
+    %label.input-box_image{for: "message_image"}
+      %i.fa.fa-image
+      %input.input-box_image_file{type:"file",id:"message_image"}
+  %input.submit-btn{type:"submit", name:"commit",value:"Send"}
