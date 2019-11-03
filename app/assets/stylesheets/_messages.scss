@@ -7,18 +7,15 @@
 .fa{
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
 }
 
 
 .left{
   @include side(300px);
-  color: white;
+  color: $white;
 
   a{
-    color: white;
+    color:$white;
   }
 
   .side-header{
@@ -159,7 +156,7 @@
     @include items(50px, 0 30px, $btn_color, true);
     width: 100px;
     margin-left: 15px;
-    color: white;
+    color: $white;
     cursor: pointer;
   }  
 }
