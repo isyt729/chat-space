@@ -1,0 +1,166 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.left{
+  @include side(300px);
+  color: $white;
+
+  a{
+    color : $white;
+  }
+
+  .side-header{
+    @include items(100px, 0 20px, #253141, true);
+    align-items: center;
+    display: flex;
+
+    .side-header-box{
+      @include flex_box;
+      width: 100%;
+      font-weight: bold;
+
+      &_menu{
+        display: flex;
+     
+        &_new-group, &_edit-user{
+          margin-left: 0.3rem;
+        }
+      }  
+    }
+  }
+    
+  .groups{
+    @include items(calc(100vh - 100px), 20px 20px 0, #2f3e51, true);
+    overflow: scroll;    
+  }
+    
+  .group{
+    margin-bottom: 40px;
+    
+    &_name{
+      @include text(15px, 5px, $set_mb:true);
+    }
+
+    &_latest-message{
+      font-size: 11px;
+    } 
+  }
+}
+
+.right{
+  @include side(calc(100vw - 300px));
+
+  .main-header{
+    @include items(100px, 0 40px);
+    @include flex_box;
+    border-bottom: solid 1px #eeeeee;
+    overflow: scroll;
+  
+    &_left-box{
+      margin-top: 35px;
+  
+      &_group-name{
+        @include text(20px, 15px, #333333 , true, true)
+      }
+  
+      &_member-header{
+        @include text(12px, $c:$gray_text, $set_c:true)
+      }
+    }
+  
+    &_edit-btn{
+      @include items(40px, 0 20px);
+      line-height: 40px;
+      margin-top: 30px;
+      border: solid 1px $btn_color;
+      position: absolute;
+      right: 40px;
+
+    }
+
+    a.edit{
+      color: $btn_color;
+    }
+  }
+  
+  .messages{
+    @include items(calc(100vh - 190px), 46px 40px, #fafafa, true);
+    overflow: scroll;
+
+    .message{
+      padding-bottom: 40px;
+    
+      &_info{
+        display: flex;
+        margin-bottom: 10px;
+    
+        &_talker{
+          @include text(16px, $c:$black_text, $set_c:true);
+          font-weight: bold;
+        }
+    
+        &_date{
+          @include text(12px, $c:$gray_text, $set_c:true);
+          margin-left: 10px;
+        }
+      }
+    
+      &_text{
+        @include text(14px, 10px, $black_text, true, true)
+      }
+    }
+  }
+  
+  .form{
+    @include items(90px, 20px 40px, #dddddd, true);
+  }
+  
+  .new-message{
+    display: flex;
+  }
+  
+  .input-box{
+    position: relative;
+    width: 100%;
+  
+    &_text{
+      @include items(50px, 0 40px 0 10px);
+      width: 100%;
+      color: $black_text;
+      border-style: none;
+    }
+  
+    &_image{
+      font-size: 1.3rem;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+
+      &_file{
+        display: none;
+      }
+    }
+  }
+  
+  .submit-btn{
+    @include items(50px, 0 30px, $btn_color, true);
+    width: 100px;
+    margin-left: 15px;
+    color: $white;
+    cursor: pointer;
+  }  
+}
+
+
+
+
+
+
+
+
+
+
