@@ -1,5 +1,13 @@
-.group
-  .group_name
-    groupname
-  .group_latest-message
-    latestmessages
+-# .group
+-#   .group_name
+-#     groupname
+-#   .group_latest-message
+-#     latestmessages
+
+- current_user.groups.each do |group|
+  .group
+    = link_to '#' do
+      .group_name
+        = group.name
+      .group_latest-message
+        メッセージはまだありません。
