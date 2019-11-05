@@ -1,7 +1,9 @@
-%form.new-message
-  .input-box
-    %input.input-box_text{placeholder:"type a message", type:"text",}
-    %label.input-box_image
-      %i.fa.fa-image
-      %input.input-box_image_file{type:"file"}
-  %input.submit-btn{type:"submit", name:"commit",value:"Send"}
+.input-box
+  = form_for [@group, @message], html: {class: 'new-message'} do |f|
+    .input-box
+      = f.text_field :content, class: 'input-box_text', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'input-box_image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'input-box_image_file'
+    = f.submit 'Send', class: 'submit-btn'
