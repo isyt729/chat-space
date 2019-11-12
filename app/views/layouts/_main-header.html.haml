@@ -1,8 +1,10 @@
 .main-header_left-box
   .main-header_left-box_group-name
-    GroupName
+    = group.name
   .main-header_left-box_member-header
-    MemberName
+    Member :  
+    - group.users.each do |user|  
+      = user.name
 %a.edit{ href: '' }
   .main-header_edit-btn
     Edit
