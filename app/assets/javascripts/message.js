@@ -12,7 +12,7 @@ $(function(){
                   <p class="message_text">
                     ${message.content}
                   </p>
-                  ${message.image.url ? `{<img src = ${message.image.url} alt="投稿画像" class = 'lower-message_image'></img>` : ""}
+                  ${message.image.url ? `<img src = ${message.image.url} alt="投稿画像" class = 'lower-message_image'></img>}` : ""}
                 </div>`
     return html;
   }
