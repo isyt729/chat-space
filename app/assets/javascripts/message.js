@@ -1,6 +1,8 @@
 $(function(){
   function buildMessage(message){
-    var html = `<div class='message'>
+    var image_html = `${message.image.url ? `<img src = ${message.image.url} alt="投稿画像" class = 'lower-message_image'></img>` : ""}`
+
+    var html = `<div class='message' data-message-id=${message.id}>
                   <div class='message_info'>
                     <div class="message_info_talker">
                       ${message.user_name}
@@ -12,7 +14,7 @@ $(function(){
                   <p class="message_text">
                     ${message.content}
                   </p>
-                  ${message.image.url ? `<img src = ${message.image.url} alt="投稿画像" class = 'lower-message_image'></img>` : ""}
+                  ${image_html}
                 </div>`
     return html;
   }
@@ -33,12 +35,13 @@ $(function(){
       var html = buildMessage(message);
       $('.messages').append(html);
       $('#new_message')[0].reset();
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
-      $('.submit-btn').prop('disabled', false);
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight})
     })
     .fail(function(){
-      alert('メッセージを入力してください');
-      $('.submit-btn').prop('disabled', false);
+      alert('メッセージを入力してください')
+    })
+    .always(function(){
+      $('.submit-btn').prop('disabled', false)
     })
   })
 })
