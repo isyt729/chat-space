@@ -5,6 +5,6 @@
     Member :  
     - group.users.each do |user|  
       = user.name
-%a.edit{ href: '' }
+%a{ href: edit_group_path(group)}
   .main-header_edit-btn
-    = link_to  'Edit' , edit_group_path(group)
+    Edit 
