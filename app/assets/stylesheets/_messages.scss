@@ -4,11 +4,6 @@
   padding: 0;
 }
 
-a:-webkit-any-link{
-  color: $btn_color;
-  text-decoration: none;
-}
-
 .left{
   @include side(300px);
   color: $white;
@@ -74,6 +69,11 @@ a:-webkit-any-link{
       &_member-header{
         @include text(12px, $c:$gray_text, $set_c:true)
       }
+    }
+
+    a{
+      color: $btn_color;
+      text-decoration: none;
     }
 
     &_edit-btn{

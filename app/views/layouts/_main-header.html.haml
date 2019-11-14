@@ -3,8 +3,7 @@
     = group.name
   .main-header_left-box_member-header
     Member :  
-    - group.users.each do |user|  
-      = user.name
-= link_to 'edit_group_path(group)' do
+    = group.users.pluck(:name).join(' ')
+= link_to edit_group_path(group) do
   .main-header_edit-btn
     Edit 
