@@ -1,5 +1,5 @@
 .input-box
-  = form_for [@group, @message], html: {class: 'new-message'} do |f|
+  = form_for [@group, @message] do |f|
     .input-box
       = f.text_field :content, class: 'input-box_text', placeholder: 'type a message'
       .form__mask

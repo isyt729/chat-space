@@ -19,7 +19,7 @@ $(function(){
     return html;
   }
 
-  $('.new-message').on('submit', function(e){
+  $('#new_message').on('submit', function(e){
     e.preventDefault()
     var formData = new FormData(this);
     var url = $(this).attr('action')
@@ -34,7 +34,7 @@ $(function(){
     .done(function(message){
       var html = buildMessage(message);
       $('.messages').append(html);
-      $('.new-message')[0].reset();
+      $('#new_message')[0].reset();
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight})
     })
     .fail(function(){
