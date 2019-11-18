@@ -70,7 +70,12 @@
         @include text(12px, $c:$gray_text, $set_c:true)
       }
     }
-  
+
+    a{
+      color: $btn_color;
+      text-decoration: none;
+    }
+
     &_edit-btn{
       @include items(40px, 0 20px);
       line-height: 40px;
@@ -78,11 +83,6 @@
       border: solid 1px $btn_color;
       position: absolute;
       right: 40px;
-
-    }
-
-    a.edit{
-      color: $btn_color;
     }
   }
   
@@ -118,7 +118,7 @@
     @include items(90px, 20px 40px, #dddddd, true);
   }
   
-  .new-message{
+  #new_message{
     display: flex;
   }
   

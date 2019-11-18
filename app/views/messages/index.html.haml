@@ -5,7 +5,7 @@
     = render partial: 'layouts/group'
 .right
   .main-header
-    = render partial: 'layouts/main-header'
+    = render partial: 'layouts/main-header', locals: { group: @group }
   .messages
     = render partial: 'layouts/message' , collection: @messages
   .form
