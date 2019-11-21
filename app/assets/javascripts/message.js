@@ -19,6 +19,16 @@ $(function(){
     return html;
   }
 
+  function reloadLastMessage(groupId) {
+    let latest_message = $('.message').last().children()[1].textContent
+    let groups = document.getElementsByClassName("group")
+    Array.prototype.forEach.call(groups, function(group){
+      if(group.children[0].getAttribute('href') == groupId){
+        group.children[0].getElementsByClassName("group_latest-message")[0].textContent = latest_message
+      }
+    })
+  }
+
   var reloadMessages = function(){
       //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
       last_message_id = $('.message').last().data("message-id");
@@ -30,6 +40,7 @@ $(function(){
         data: {id: last_message_id}
       })
       .done(function(messages) {
+         reloadLastMessage(group_num[0])
         //追加するHTMLの入れ物を作る
         var insertHTML = '';
         //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
