@@ -54,11 +54,12 @@ $(function(){
       .fail(function() {
         console.log('error');
       });
-  };
+  }
 
   $('#new_message').on('submit', function(e){
     e.preventDefault()
     var formData = new FormData(this);
+    console.log(formData)
     var url = $(this).attr('action');
     $.ajax({
       url: url,

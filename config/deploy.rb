@@ -1,4 +1,10 @@
-	
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
+  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+}
+  
 # config valid only for current version of Capistrano
 # capistranoのバージョンを記載。固定のバージョンを利用し続け、バージョン変更によるトラブルを防止する
 lock '3.11.2'
@@ -15,8 +21,6 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1' #カリキュラム通りに進めた場合、2.5.1か2.3.1です
 
-set :linked_files, %w{ config/secrets.yml }
-
 # どの公開鍵を利用してデプロイするか
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/Chatspace2.pem'] 
@@ -27,6 +31,11 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 # Unicornの設定ファイルの場所
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
+
+# secrets.yml用のシンボリックリンクを追加
+set :linked_files, %w{ config/secrets.yml }
+
+# 元々記述されていた after 「'deploy:publishing', 'deploy:restart'」以下を削除して、次のように書き換え
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
@@ -47,9 +56,3 @@ namespace :deploy do
   after :finishing, 'deploy:cleanup'
 end
 
-set :default_env, {
-  rbenv_root: "/usr/local/rbenv",
-  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
-  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
-  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
-}
