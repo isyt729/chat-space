@@ -23,8 +23,9 @@ $(function(){
     let latest_message = $('.message').last().children()[1].textContent
     let groups = document.getElementsByClassName("group")
     Array.prototype.forEach.call(groups, function(group){
-      if(group.children[0].getAttribute('href') == groupId){
-        group.children[0].getElementsByClassName("group_latest-message")[0].textContent = latest_message
+      let group_message = group.children[0]
+      if(group_message.getAttribute('href') == groupId){
+        group_message.getElementsByClassName("group_latest-message")[0].textContent = latest_message
       }
     })
   }
