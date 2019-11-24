@@ -8,7 +8,6 @@ $(function() {
     `;
     $("#user-search-result").append(html);
   }
-
   function addNoUser() {
     let html = `
       <div class="chat-group-user clearfix">
@@ -31,6 +30,7 @@ $(function() {
   }
   $("#user-search-field").on("keyup", function() {
     let input = $("#user-search-field").val();
+
     $.ajax({
       type: "GET",
       url: "/users",
@@ -39,10 +39,23 @@ $(function() {
     })
       .done(function(users) {
         $("#user-search-result").empty();
-
-        if (users.length !== 0) {
+        var added_users_id = [];
+        var member_users_id = [];
+        $.each($(".chat-group-user"), function(){
+            if($(this).attr("id")){
+              added_users_id.push(Number($(this).attr("id")));
+            } 
+        })
+        $.each($(".js-chat-member"), function(){
+            member_users_id.push(Number($(this).find("input").val()));
+           
+      })
+     
+        if (users.length !== 0) { 
           users.forEach(function(user) {
-            addUser(user);
+            if(($.inArray(user.id, added_users_id) == -1 || $.isEmptyObject(added_users_id)) && $.inArray(user.id, member_users_id) == -1) {
+              addUser(user,added_users_id);
+            }            
           });
         } else if (input.length == 0) {
           return false;
