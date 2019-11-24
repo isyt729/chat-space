@@ -24,7 +24,7 @@ $(function(){
     let groups = document.getElementsByClassName("group");
     Array.prototype.forEach.call(groups, function(group){
       let group_message = group.children[0];
-      if(group_message.getAttribute('href') == groupId && !latest_message){
+      if(group_message.getAttribute('href') == groupId){
         group_message.getElementsByClassName("group_latest-message")[0].textContent = latest_message;
       }
     })
