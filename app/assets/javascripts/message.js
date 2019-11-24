@@ -24,7 +24,7 @@ $(function(){
     let groups = document.getElementsByClassName("group");
     Array.prototype.forEach.call(groups, function(group){
       let group_message = group.children[0];
-      if(group_message.getAttribute('href') == groupId){
+      if(group_message.getAttribute('href') == groupId && !latest_message){
         group_message.getElementsByClassName("group_latest-message")[0].textContent = latest_message;
       }
     })
@@ -32,7 +32,10 @@ $(function(){
 
   var reloadMessages = function(){
       //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
-      last_message_id = $('.message').last().data("message-id");
+      var last_message_id = $('.message').last().data("message-id");
+      if(!last_message_id){
+        last_message_id=0
+      }
       var group_num = (location.href).match(/\/groups\/(\d+)\/messages/);
       $.ajax({
         url: `/groups/${group_num[1]}/api/messages`,
@@ -41,7 +44,9 @@ $(function(){
         data: {id: last_message_id}
       })
       .done(function(messages) {
-         reloadLastMessage(group_num[0]);
+        if($('.message').last().children()[1]){
+        reloadLastMessage(group_num[0]);
+        }
         //追加するHTMLの入れ物を作る
         var insertHTML = '';
         //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
