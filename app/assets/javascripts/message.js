@@ -50,11 +50,13 @@ $(function(){
         //追加するHTMLの入れ物を作る
         var insertHTML = '';
         //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
+        if(messages.length > 0){
         messages.forEach(function (message){
           insertHTML = buildMessage(message); 
           $('.messages').append(insertHTML);
         })
         $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+      }
       })
       .fail(function() {
         alert('自動更新に失敗しました');
