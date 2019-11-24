@@ -34,7 +34,6 @@ $(function(){
       //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
       last_message_id = $('.message').last().data("message-id");
       var group_num = (location.href).match(/\/groups\/(\d+)\/messages/);
-      console.log(last_message_id)
       $.ajax({
         url: `/groups/${group_num[1]}/api/messages`,
         type: 'get',
