@@ -21,7 +21,7 @@
 |user|references|null:false, foreign_key: true|
 |group|references|null:false, foreign_key: true|
 
-
+１
 ### Messages
 |Column|Type|Options|
 |------|----|-------|
